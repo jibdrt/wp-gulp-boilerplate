@@ -1,0 +1,40 @@
+$breakpoints: (
+        bigscreen: 1850px,
+        xxlarge: 1650px,
+        xlarge: 1450px,
+        mlarge: 1250px,
+        large: 1000px,
+        medium: 768px,
+        smallheight: 850px,
+        bigheight: 950px,
+);
+
+@mixin breakpoint-up($breakpoint) {
+  @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($breakpoint) {
+  @media screen and (max-width: calc(map-get($breakpoints, $breakpoint) - .02px)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-between($breakpointMin, $breakpointMax) {
+  @media screen and (min-width: map-get($breakpoints, $breakpointMin)) and (max-width: calc(map-get($breakpoints, $breakpointMax) - .02px)) {
+    @content;
+  }
+}
+
+@mixin height-down($breakpoint) {
+  @media screen and (max-height: calc(map-get($breakpoints, $breakpoint) - .02px)) {
+    @content;
+  }
+}
+
+@mixin height-up($breakpoint) {
+  @media screen and (max-height: calc(map-get($breakpoints, $breakpoint) - .02px)) {
+    @content;
+  }
+}
